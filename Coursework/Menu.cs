@@ -245,6 +245,8 @@ namespace Coursework
                     scaleManager.SaveToXml(path);
 
                 isModified = false;
+                RefreshGrid();
+
             }
             catch (Exception ex)
             {
