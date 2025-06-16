@@ -248,6 +248,7 @@
             groupBox2.TabIndex = 25;
             groupBox2.TabStop = false;
             groupBox2.Text = "Work with scales";
+            groupBox2.Visible = false;
             // 
             // btnTotalPrice
             // 

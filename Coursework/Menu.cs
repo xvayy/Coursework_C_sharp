@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
 
 namespace Coursework
 {
@@ -296,6 +297,7 @@ namespace Coursework
                     return;
                 }
 
+                groupBox2.Visible = true;
                 isModified = false;
                 RefreshGrid();
             }
