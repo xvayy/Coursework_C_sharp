@@ -78,77 +78,9 @@ namespace Coursework
             return (int)Math.Floor(value);
         }
 
-        // Арифметичні оператори
-        public static RealNumber operator +(RealNumber a, RealNumber b)
-        {
-            double result = a.value + b.value;
-            double newMin = Math.Min(a.minRange, b.minRange);
-            double newMax = Math.Max(a.maxRange, b.maxRange);
-            newMin = Math.Min(newMin, result);
-            newMax = Math.Max(newMax, result);
-            return new RealNumber(result, newMin, newMax);
-        }
-
-        public static RealNumber operator -(RealNumber a, RealNumber b)
-        {
-            double result = a.value - b.value;
-            double newMin = Math.Min(a.minRange, b.minRange);
-            double newMax = Math.Max(a.maxRange, b.maxRange);
-            newMin = Math.Min(newMin, result);
-            newMax = Math.Max(newMax, result);
-            return new RealNumber(result, newMin, newMax);
-        }
-
-        public static RealNumber operator *(RealNumber a, RealNumber b)
-        {
-            double result = a.value * b.value;
-
-            double[] bounds = new double[]
-            {
-                a.minRange * b.minRange,
-                a.minRange * b.maxRange,
-                a.maxRange * b.minRange,
-                a.maxRange * b.maxRange
-            };
-
-            double newMin = Math.Min(Math.Min(bounds[0], bounds[1]), Math.Min(bounds[2], bounds[3]));
-            double newMax = Math.Max(Math.Max(bounds[0], bounds[1]), Math.Max(bounds[2], bounds[3]));
-
-            newMin = Math.Min(newMin, result);
-            newMax = Math.Max(newMax, result);
-
-            return new RealNumber(result, newMin, newMax);
-        }
-
-        public static RealNumber operator /(RealNumber a, RealNumber b)
-        {
-            if (b.value == 0)
-                throw new DivideByZeroException("Division by zero");
-
-            if (b.minRange <= 0 && b.maxRange >= 0)
-                throw new InvalidOperationException("Division range includes zero");
-
-            double result = a.value / b.value;
-
-            double[] bounds = new double[]
-            {
-                a.minRange / b.minRange,
-                a.minRange / b.maxRange,
-                a.maxRange / b.minRange,
-                a.maxRange / b.maxRange
-            };
-
-            double newMin = Math.Min(Math.Min(bounds[0], bounds[1]), Math.Min(bounds[2], bounds[3]));
-            double newMax = Math.Max(Math.Max(bounds[0], bounds[1]), Math.Max(bounds[2], bounds[3]));
-
-            newMin = Math.Min(newMin, result);
-            newMax = Math.Max(newMax, result);
-
-            return new RealNumber(result, newMin, newMax);
-        }
-
-        // Перевизначений метод ToString
-        public override string ToString()
+        
+        // Перевизначений метод
+        public override string Info()
         {
             return $"RealNumber: {value:F2}, Range: [{minRange:F2}, {maxRange:F2}]";
         }

@@ -20,7 +20,7 @@ namespace Coursework
         }
 
         // Віртуальний метод друку
-        public override string ToString()
+        public virtual string Info()
         {
             return $"Number: {value}";
         }

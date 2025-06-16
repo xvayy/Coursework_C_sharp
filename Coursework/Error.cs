@@ -30,7 +30,7 @@ namespace Coursework
             double totalError = scaleManager.CalculateTotalWeighingError();
 
             totalWeighingEntries.Text = totalLogs.ToString();
-            lblTotalError.Text = totalError.ToString("F4");
+            lblTotalError.Text = totalError.ToString("F4") + " kg";
 
         }
     }

@@ -83,7 +83,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(141, 316);
+            label3.Location = new Point(160, 315);
             label3.Name = "label3";
             label3.Size = new Size(15, 15);
             label3.TabIndex = 5;
@@ -94,7 +94,7 @@
             lblTotalError.AutoSize = true;
             lblTotalError.Font = new Font("Segoe UI", 21.75F, FontStyle.Regular, GraphicsUnit.Point, 204);
             lblTotalError.ForeColor = Color.Red;
-            lblTotalError.Location = new Point(162, 304);
+            lblTotalError.Location = new Point(190, 304);
             lblTotalError.Name = "lblTotalError";
             lblTotalError.Size = new Size(33, 40);
             lblTotalError.TabIndex = 6;
