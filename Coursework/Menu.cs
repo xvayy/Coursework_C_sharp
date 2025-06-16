@@ -5,7 +5,7 @@ namespace Coursework
 {
     public partial class Menu : Form
     {
-        private IScaleManager scaleManager;
+        private ScaleManager scaleManager;
         private PackingWorkshop packingWorkshop;
         private string path;
         private bool isModified = false;
@@ -15,7 +15,7 @@ namespace Coursework
             InitializeComponent();
             scaleManager = new ScaleManager();
             Product product = new Product("Chicken", 689, 85, 12);
-            packingWorkshop = new PackingWorkshop(scaleManager, "Meat", product);
+            packingWorkshop = new PackingWorkshop("Meat", product);
         }
 
         private void Menu_Load(object sender, EventArgs e)

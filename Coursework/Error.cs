@@ -12,8 +12,8 @@ namespace Coursework
 {
     public partial class Error : Form
     {
-        private readonly IScaleManager scaleManager;
-        public Error(IScaleManager manager)
+        private readonly ScaleManager scaleManager;
+        public Error(ScaleManager manager)
         {
             InitializeComponent();
             scaleManager = manager;

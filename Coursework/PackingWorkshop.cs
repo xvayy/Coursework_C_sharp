@@ -5,34 +5,18 @@ namespace Coursework
 {
     public class PackingWorkshop
     {
-        private readonly IScaleManager scaleManager;
         private Product product;
 
         private string specialization;
-        //private string productName = "No name";
-        //private double productQuantity = 0;
-        //private double unitPrice = 0;
-        //private double packageWeight = 0;
         private int packageCount = 0;
         private double totalPrice = 0;
 
-        public PackingWorkshop(IScaleManager manager, string specialization, Product product)
+        public PackingWorkshop(string specialization, Product product)
         {
-            this.scaleManager = manager;
             this.specialization = specialization;
             this.product = product;
         }
-        //public PackingWorkshop(IScaleManager manager, string specialization, string productName,
-        //                       double quantity, double price, double pkgWeight, int pkgCount)
-        //{
-        //    this.scaleManager = manager;
-        //    this.specialization = specialization;
-        //    this.productName = productName;
-        //    this.productQuantity = quantity;
-        //    this.unitPrice = price;
-        //    this.packageWeight = pkgWeight;
-        //    this.packageCount = pkgCount;
-        //}
+
 
         public void DisplayProductInfo()
         {
@@ -47,9 +31,8 @@ namespace Coursework
             MessageBox.Show(info, "Product Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
-        public bool WeighProduct(double amount)
+        public bool startWeighing(DigitalScale scale, double amount)
         {
-            var scale = scaleManager.GetSelectedScale();
             if (scale == null)
             {
                 MessageBox.Show("No scale selected.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -76,7 +59,7 @@ namespace Coursework
             return true;
         }
 
-        public void PackProduct(DigitalScale scale)
+        public void startPacking(DigitalScale scale)
         {
             if (scale == null)
             {
@@ -133,7 +116,6 @@ namespace Coursework
         }
 
         // Гетери
-        public DigitalScale? GetSelectedScale() => scaleManager.GetSelectedScale();
         public int PackageCount => packageCount;
         public double TotalPrice => totalPrice;
 

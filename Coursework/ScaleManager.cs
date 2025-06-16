@@ -7,7 +7,7 @@ using System.Xml.Serialization;
 
 namespace Coursework
 {
-    public class ScaleManager : IScaleManager
+    public class ScaleManager : IEnumerable<DigitalScale>
     {
         private List<DigitalScale> scales = new List<DigitalScale>();
         private DigitalScale? selectedScale = null;

@@ -39,7 +39,7 @@ namespace Coursework
         private void btnPack_Click(object sender, EventArgs e)
         {
 
-            pkw.PackProduct(scale);
+            pkw.startPacking(scale);
             scale.ResetWeight();
             txtMass.Text = scale.Weight.ToString("F2");
             txtTotal.Text = "0.0";
