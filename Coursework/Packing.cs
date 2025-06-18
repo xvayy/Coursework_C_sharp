@@ -35,11 +35,10 @@ namespace Coursework
             lblPackageCount.Text = pkw.PackageCount.ToString();
         }
 
-
         private void btnPack_Click(object sender, EventArgs e)
         {
-
             pkw.startPacking(scale);
+
             scale.ResetWeight();
             txtMass.Text = scale.Weight.ToString("F2");
             txtTotal.Text = "0.0";
@@ -47,21 +46,6 @@ namespace Coursework
             lblPackageCount.Text = pkw.PackageCount.ToString();
             UpdateScaleImage();
         }
-
-        //private void txtMass_TextChanged(object sender, EventArgs e)
-        //{
-        //    if (double.TryParse(txtMass.Text, out double mass))
-        //    {
-        //        scale.ResetWeight();
-        //        scale.AddWeight(mass);
-        //        txtTotal.Text = scale.CalculateTotalPrice().ToString("F2");
-        //    }
-        //    else
-        //    {
-        //        txtTotal.Text = "0.00";
-        //    }
-        //}
-
 
         private void UpdateScaleImage()
         {
@@ -77,12 +61,6 @@ namespace Coursework
 
         private void txtPrice_TextChanged(object sender, EventArgs e)
         {
-            //var result = MessageBox.Show("Are you sure you want to change price? It will change product price",
-            //    "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-            //if (result == DialogResult.Yes)
-            //{
-            //}
 
             try
             {

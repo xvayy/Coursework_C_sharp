@@ -27,24 +27,10 @@ namespace Coursework
             scales.RemoveAt(index);
         }
 
-        //public void SelectScale(int scaleId)
-        //{
-        //    selectedScale = scales.FirstOrDefault(s => s.Id == scaleId);
-        //}
-
         public int FindScaleIndexById(int id)
         {
             return scales.FindIndex(s => s.Id == id);
         }
-        
-        //public void EditScaleById(int id, Action<DigitalScale> editAction)
-        //{
-        //    var index = FindScaleIndexById(id);
-        //    if (index >= 0)
-        //        editAction(scales[index]);
-        //    else
-        //        throw new ArgumentException($"Scale with ID {id} not found");
-        //}
 
         public double CalculateTotalWeighingError()
         {
@@ -61,13 +47,7 @@ namespace Coursework
             return Math.Sqrt(sum);
         }
 
-        public DigitalScale? GetSelectedScale() => selectedScale;
-
         public List<DigitalScale> GetAllScales() => scales;
-
-
-
-
 
         // ==== JSON & XML Serialization/Deserialization ====
 
@@ -176,7 +156,10 @@ namespace Coursework
             return new ScaleEnumerator(scales);
         }
 
-        IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
+        }
 
         private class ScaleEnumerator : IEnumerator<DigitalScale>
         {
@@ -202,8 +185,11 @@ namespace Coursework
 
             public bool MoveNext()
             {
+                if (position + 1 >= scales.Count)
+                    return false;
+
                 position++;
-                return position < scales.Count;
+                return true;
             }
 
             public void Reset()

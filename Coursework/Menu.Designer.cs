@@ -45,14 +45,13 @@
             dgv = new DataGridView();
             btnStartProcess = new Button();
             btnError = new Button();
-            fileSystemWatcher1 = new FileSystemWatcher();
             groupBox2 = new GroupBox();
             btnTotalPrice = new Button();
+            btnPoly = new Button();
             groupBox1.SuspendLayout();
             warning.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgv).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)fileSystemWatcher1).BeginInit();
             groupBox2.SuspendLayout();
             SuspendLayout();
             // 
@@ -209,7 +208,7 @@
             dgv.MultiSelect = false;
             dgv.Name = "dgv";
             dgv.ReadOnly = true;
-            dgv.Size = new Size(666, 432);
+            dgv.Size = new Size(666, 484);
             dgv.TabIndex = 15;
             // 
             // btnStartProcess
@@ -232,11 +231,6 @@
             btnError.UseVisualStyleBackColor = true;
             btnError.Click += btnError_Click;
             // 
-            // fileSystemWatcher1
-            // 
-            fileSystemWatcher1.EnableRaisingEvents = true;
-            fileSystemWatcher1.SynchronizingObject = this;
-            // 
             // groupBox2
             // 
             groupBox2.Controls.Add(btnAdd);
@@ -256,15 +250,26 @@
             btnTotalPrice.Name = "btnTotalPrice";
             btnTotalPrice.Size = new Size(312, 46);
             btnTotalPrice.TabIndex = 26;
-            btnTotalPrice.Text = "Total price for packed products";
+            btnTotalPrice.Text = "Price summary";
             btnTotalPrice.UseVisualStyleBackColor = true;
             btnTotalPrice.Click += btnTotalPrice_Click;
+            // 
+            // btnPoly
+            // 
+            btnPoly.Location = new Point(712, 491);
+            btnPoly.Name = "btnPoly";
+            btnPoly.Size = new Size(312, 46);
+            btnPoly.TabIndex = 27;
+            btnPoly.Text = "Polymorphism";
+            btnPoly.UseVisualStyleBackColor = true;
+            btnPoly.Click += btnPoly_Click;
             // 
             // Menu
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1043, 531);
+            ClientSize = new Size(1050, 558);
+            Controls.Add(btnPoly);
             Controls.Add(btnTotalPrice);
             Controls.Add(groupBox2);
             Controls.Add(btnError);
@@ -282,7 +287,6 @@
             warning.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)dgv).EndInit();
-            ((System.ComponentModel.ISupportInitialize)fileSystemWatcher1).EndInit();
             groupBox2.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
@@ -303,11 +307,11 @@
         private DataGridView dgv;
         private Button btnStartProcess;
         private Button btnError;
-        private FileSystemWatcher fileSystemWatcher1;
         private Panel warning;
         private PictureBox pictureBox1;
         private Label UnsavedChanges;
         private Button btnTotalPrice;
         private GroupBox groupBox2;
+        private Button btnPoly;
     }
 }

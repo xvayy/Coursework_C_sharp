@@ -10,55 +10,15 @@ namespace Coursework
         private string specialization;
         private int packageCount = 0;
         private double totalPrice = 0;
+        private double totalPackedPrice = 0;
+        private double markupPercentage = 20;
 
         public PackingWorkshop(string specialization, Product product)
         {
             this.specialization = specialization;
             this.product = product;
         }
-
-
-        public void DisplayProductInfo()
-        {
-            string info =
-                "=== Product Information ===\n" +
-                $"Product name: {product.Name}\n" +
-                $"Available amount: {product.QuantityKg} kg\n" +
-                $"Unit price: {product.UnitPrice} UAH/kg\n" +
-                $"Package weight: {product.PackageWeight} kg\n" +
-                $"Packed packages: {packageCount}\n" +
-                "============================";
-            MessageBox.Show(info, "Product Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
-
-        public bool startWeighing(DigitalScale scale, double amount)
-        {
-            if (scale == null)
-            {
-                MessageBox.Show("No scale selected.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return false;
-            }
-            if (amount > product.QuantityKg)
-            {
-                MessageBox.Show("Not enough product.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return false;
-            }
-            if (amount < scale.MinWeight || amount > scale.MaxWeight)
-            {
-                MessageBox.Show("Amount out of scale range.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return false;
-            }
-            if (amount <= 0)
-            {
-                MessageBox.Show("Amount must be a positive number.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return false;
-            }
-
-            scale.AddWeight(amount);
-            product.QuantityKg -= amount;
-            return true;
-        }
-
+        
         public void startPacking(DigitalScale scale)
         {
             if (scale == null)
@@ -75,12 +35,10 @@ namespace Coursework
                 return;
             }
 
-            // Віднімаємо всю масу, що пішла на вагу
             product.QuantityKg -= weightOnScale;
 
             if (weightOnScale < product.PackageWeight)
             {
-                // повертаємо назад все, бо замало для фасування
                 product.QuantityKg += weightOnScale;
                 scale.ResetWeight();
                 MessageBox.Show("Not enough weight for a package.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -91,28 +49,22 @@ namespace Coursework
             double usedWeight = newPackages * product.PackageWeight;
             double leftover = weightOnScale - usedWeight;
 
-            packageCount += newPackages;
-            product.QuantityKg += leftover; // повертаємо лише залишок
-            totalPrice += usedWeight * product.UnitPrice;
-
+            UpdateTotals(newPackages, usedWeight);
+            product.QuantityKg += leftover;
             scale.ResetWeight();
 
-            MessageBox.Show($"Packed {newPackages} packages. Returned {leftover:F2} kg to stock.",
+            MessageBox.Show($"Packed {newPackages} packages. Returned {leftover} kg to stock.",
                 "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
-        public void GenerateReport(string path)
+        private void UpdateTotals(int newPackages, double usedWeight)
         {
-            using (var writer = new StreamWriter(path))
-            {
-                writer.WriteLine($"Product: {product.Name}");
-                writer.WriteLine($"Total packed: {packageCount} packages");
-                writer.WriteLine($"Remaining product: {product.QuantityKg} kg");
-                writer.WriteLine($"Unit price: {product.UnitPrice} UAH/kg");
-                writer.WriteLine($"Total value packed: {totalPrice} UAH");
-                writer.WriteLine("---");
-            }
-            MessageBox.Show($"Report saved to {path}", "Report", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            packageCount += newPackages;
+            totalPrice += usedWeight * product.UnitPrice;
+
+            double costPerPackage = product.PackageWeight * product.UnitPrice;
+            double pricePerPackageWithMarkup = costPerPackage * (1 + markupPercentage / 100.0);
+            totalPackedPrice += newPackages * pricePerPackageWithMarkup;
         }
 
         // Гетери
@@ -124,13 +76,8 @@ namespace Coursework
         public double UnitPrice => product.UnitPrice;
         public double PackageWeight => product.PackageWeight;
 
+        public double TotalPackedPrice => totalPackedPrice;
+        public double MarkupPercentage => markupPercentage;
 
-
-        // Сетери з валідацією
-        public void SetPackageCount(int count)
-        {
-            if (count < 0) throw new ArgumentException("Package count must be non-negative.");
-            packageCount = count;
-        }
     }
 }

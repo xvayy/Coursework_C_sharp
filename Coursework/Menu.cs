@@ -15,33 +15,13 @@ namespace Coursework
         {
             InitializeComponent();
             scaleManager = new ScaleManager();
-            Product product = new Product("Chicken", 689, 85, 12);
+            Product product = new Product("Chicken", 689, 15, 12);
             packingWorkshop = new PackingWorkshop("Meat", product);
         }
 
         private void Menu_Load(object sender, EventArgs e)
         {
             dgv.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            /*scaleManager.AddScale(new DigitalScale(0, 12.5, 0.0, 50.0, 0.01, 100));
-            scaleManager.AddScale(new DigitalScale(0, 8.3, 0.0, 40.0, 0.02, 80));
-            scaleManager.AddScale(new DigitalScale(0, 5.0, 0.0, 30.0, 0.015, 120));
-            scaleManager.AddScale(new DigitalScale(0, 20.0, 5.0, 50.0, 0.005, 150));
-            scaleManager.AddScale(new DigitalScale(0, 18.2, 0.0, 60.0, 0.01, 90));
-            scaleManager.AddScale(new DigitalScale(0, 10.0, 0.0, 25.0, 0.02, 75));
-            scaleManager.AddScale(new DigitalScale(0, 14.4, 0.0, 45.0, 0.012, 110));
-            scaleManager.AddScale(new DigitalScale(0, 9.9, 0.0, 20.0, 0.01, 95));
-            scaleManager.AddScale(new DigitalScale(0, 22.1, 10.0, 60.0, 0.008, 130));
-            scaleManager.AddScale(new DigitalScale(0, 16.7, 0.0, 35.0, 0.01, 105));
-            scaleManager.AddScale(new DigitalScale(0, 12.5, 0.0, 50.0, 0.01, 100));
-            scaleManager.AddScale(new DigitalScale(0, 8.3, 0.0, 40.0, 0.02, 80));
-            scaleManager.AddScale(new DigitalScale(0, 5.0, 0.0, 30.0, 0.015, 120));
-            scaleManager.AddScale(new DigitalScale(0, 20.0, 5.0, 50.0, 0.005, 150));
-            scaleManager.AddScale(new DigitalScale(0, 18.2, 0.0, 60.0, 0.01, 90));
-            scaleManager.AddScale(new DigitalScale(0, 10.0, 0.0, 25.0, 0.02, 75));
-            scaleManager.AddScale(new DigitalScale(0, 14.4, 0.0, 45.0, 0.012, 110));
-            scaleManager.AddScale(new DigitalScale(0, 9.9, 0.0, 20.0, 0.01, 95));
-            scaleManager.AddScale(new DigitalScale(0, 22.1, 10.0, 60.0, 0.008, 130));
-            scaleManager.AddScale(new DigitalScale(0, 16.7, 0.0, 35.0, 0.01, 105));*/
             RefreshGrid();
 
         }
@@ -185,7 +165,7 @@ namespace Coursework
                 return;
             }
 
-            // Якщо шлях не задано або файл не існує — відкриваємо SaveFileDialog
+            // Якщо шлях не задано або файл не існує відкривається SaveFileDialog
             if (string.IsNullOrWhiteSpace(path) || !File.Exists(path))
             {
                 SaveFileDialog sfd = new SaveFileDialog();
@@ -203,7 +183,7 @@ namespace Coursework
                 path = sfd.FileName;
             }
 
-            // 🔍 Захист: якщо розширення НЕ збігається з форматом, не перезаписуємо
+            // Захист якщо розширення НЕ збігається з форматом, не перезаписуємо
             string actualExtension = Path.GetExtension(path).ToLower();
             if (actualExtension != selectedExtension)
             {
@@ -229,7 +209,6 @@ namespace Coursework
                 }
                 else
                 {
-                    // Відміна
                     MessageBox.Show("Saving cancelled to avoid overwriting the existing file.", "Cancelled", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
@@ -311,12 +290,33 @@ namespace Coursework
 
         private void btnTotalPrice_Click(object sender, EventArgs e)
         {
-            double total = packingWorkshop.TotalPrice;
-            MessageBox.Show($"Total packed product price: {total:F2} UAH",
-                "Total Price",
-                MessageBoxButtons.OK,
-                MessageBoxIcon.Information);
-        }
+            string info = $"Package count: {packingWorkshop.PackageCount}\n" +
+                          $"Total cost price: {packingWorkshop.TotalPrice:F2} UAH\n" +
+                          $"Total price with markup: {packingWorkshop.TotalPackedPrice:F2} UAH\n" +
+                          $"Profit: {packingWorkshop.TotalPackedPrice - packingWorkshop.TotalPrice} UAH";
 
+
+            MessageBox.Show(info, "Summary", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+        
+        private void btnPoly_Click(object sender, EventArgs e)
+        {
+            Number[] numbers = new Number[5];
+            numbers[0] = new RealNumber(2.71, 0.0, 10.0);
+            numbers[1] = new Number(3.14);
+            numbers[2] = new Number(10);
+            numbers[3] = new RealNumber(5.84, 0.0, 78.0);
+            numbers[4] = new Number(56);
+
+
+            string output = "";
+
+            for (int i = 0; i < numbers.Length; i++)
+            {
+                output += $"Object {i + 1}: {numbers[i].Info()}\n";
+            }
+
+            MessageBox.Show(output, "Polymorphism Demo");
+        }
     }
 }

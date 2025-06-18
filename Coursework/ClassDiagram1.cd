@@ -1,11 +1,100 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="Coursework.RealNumber" Collapsed="true">
-    <Position X="2.25" Y="1.75" Width="1.5" />
+  <Class Name="Coursework.RealNumber">
+    <Position X="2.5" Y="3" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>IAAAAAgAAAAIAAAEYIUAAAAAAAAAQAAAAAAgACAAAAg=</HashCode>
+      <HashCode>IAAAAAgAAAAIAAAAAIAAAAAAAAAAQAAAAAAgAGAAAAg=</HashCode>
       <FileName>RealNumber.cs</FileName>
     </TypeIdentifier>
   </Class>
+  <Class Name="Coursework.Number">
+    <Position X="0.5" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAgAEAAAAA=</HashCode>
+      <FileName>Number.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Coursework.DigitalScale">
+    <Position X="4.5" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>KIASACASAAAIAAAEAAABAAAAADAAAAAgAAAQECAAEgA=</HashCode>
+      <FileName>DigitalScale.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Coursework.ScaleManager">
+    <Position X="6.5" Y="1.25" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Class Name="Coursework.ScaleManager.ScaleEnumerator">
+        <TypeIdentifier>
+          <NewMemberFileName>ScaleManager.cs</NewMemberFileName>
+        </TypeIdentifier>
+        <Lollipop Position="0.2" />
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>QAAAAABAAAAgQBAAAACAAAACAAAEAAAUAAIAAACAAUA=</HashCode>
+      <FileName>ScaleManager.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Coursework.Product">
+    <Position X="8.25" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAAAAAAAAAAAAAQAAABEAAIAQAACACAAAAA=</HashCode>
+      <FileName>Product.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Coursework.PackingWorkshop">
+    <Position X="10" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAgAAAAAAgAAAAAAAAAAAABAAAAAQAIAAAQQAESMAAA=</HashCode>
+      <FileName>PackingWorkshop.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Coursework.Menu" Collapsed="true">
+    <Position X="12" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQABgAABACEACBAAAFCCSAACAgCUgBIIASAAEAJAERY=</HashCode>
+      <FileName>Menu.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Coursework.Packing" Collapsed="true">
+    <Position X="12" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QwBAAAAQAGAQABACAACCAAgSAAQoIAAAACAAFChQQAQ=</HashCode>
+      <FileName>Packing.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Coursework.AddScale" Collapsed="true">
+    <Position X="12" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAACEAQBEAIQCAAEACAAAggBAAAAAAAABAAAI=</HashCode>
+      <FileName>AddScale.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Coursework.EditScale" Collapsed="true">
+    <Position X="12" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAACMAABEAAQCAAEACAAAgBFAAAAAAAABAAAA=</HashCode>
+      <FileName>EditScale.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Coursework.Error" Collapsed="true">
+    <Position X="12" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAABAAAACAAAACAAAAACAAAAAAEgBEAAA=</HashCode>
+      <FileName>Error.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Struct Name="Coursework.WeighingEntry">
+    <Position X="4.5" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAACAAAA=</HashCode>
+      <FileName>DigitalScale.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>
